@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +13,89 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _isHovering = false;
+  bool _isHovering2 = false;
+
+  final String urlGtihub = "https://github.com/Abderrahmane-Berramdan";
+  final String urlLinkedin =
+      "https://www.linkedin.com/in/abderrahmane-berramdan-6bb225301/";
+  final String urlCV =
+      "https://drive.google.com/file/d/19q6fRdS1WwVftLAm4QvMw8wyY3KSGOqU/view?usp=sharing";
+
+  Future<void> openCV() async {
+    try {
+      if (kIsWeb) {
+        await launchUrlString(urlCV, webOnlyWindowName: '_blank');
+      } else {
+        final uri = Uri.parse(urlCV);
+        final launched = await launchUrl(
+          uri,
+          mode: LaunchMode.externalApplication,
+        );
+        if (!mounted) return;
+        if (!launched) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text("Unable to open file")));
+        }
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("An error occurred:$e")));
+    }
+  }
+
+  Future<void> openGithub() async {
+    try {
+      if (kIsWeb) {
+        await launchUrlString(urlGtihub, webOnlyWindowName: "_blank");
+      } else {
+        final uri = Uri.parse(urlGtihub);
+        final launched = await launchUrl(
+          uri,
+          mode: LaunchMode.externalApplication,
+        );
+        if (!mounted) return;
+        if (!launched) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Unable to open The link")),
+          );
+        }
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("An error occurred: $e")));
+    }
+  }
+
+  Future<void> openLinkedin() async {
+    try {
+      if (kIsWeb) {
+        await launchUrlString(urlLinkedin, webOnlyWindowName: "_blank");
+      } else {
+        final uri = Uri.parse(urlLinkedin);
+        final launched = await launchUrl(
+          uri,
+          mode: LaunchMode.externalApplication,
+        );
+        if (!mounted) return;
+        if (!launched) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Unable to open The link")),
+          );
+        }
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("An error occurred: $e")));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,13 +131,30 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       TextButton(
+                        style: const ButtonStyle(
+                          overlayColor: WidgetStatePropertyAll(
+                            Colors.transparent,
+                          ),
+                        ),
                         onPressed: () {},
-                        child: const Text(
-                          "Home",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                        onHover: (value) {
+                          setState(() {
+                            _isHovering2 = value;
+                          });
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 250),
+                          transform: _isHovering2
+                              ? (Matrix4.identity()..translate(0, -4))
+                              : Matrix4.identity(),
+                          child: const Text(
+                            "Home",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -109,11 +212,21 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 70,
               children: [
-                const SizedBox(
-                  height: 260,
-                  width: 260,
-                  child: CircleAvatar(
-                    radius: 25,
+                Container(
+                  height: 350,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    color: const Color(0xff424657),
+                    borderRadius: BorderRadius.circular(200),
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 30,
+                        color: Colors.grey,
+                        spreadRadius: 5,
+                      ),
+                    ],
+                  ),
+                  child: const CircleAvatar(
                     backgroundImage: AssetImage("assets/my_photo.jpg"),
                   ),
                 ),
@@ -171,70 +284,80 @@ class _HomePageState extends State<HomePage> {
                         spacing: 10,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Lottie.asset("assets/github.json", height: 70),
-                          Lottie.asset(
-                            "assets/Linkedin Subtle.json",
-                            height: 60,
+                          Tooltip(
+                            message: "GitHub",
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.black87,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: GestureDetector(
+                              onTap: openGithub,
+                              child: Lottie.asset(
+                                "assets/github.json",
+                                height: 70,
+                              ),
+                            ),
+                          ),
+                          Tooltip(
+                            message: "Linkedin",
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 13,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.black87,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: GestureDetector(
+                              onTap: openLinkedin,
+                              child: Lottie.asset(
+                                "assets/linkedin.json",
+                                height: 60,
+                              ),
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    // Container(
-                    //   padding: const EdgeInsets.symmetric(
-                    //     horizontal: 20,
-                    //     vertical: 13,
-                    //   ),
-                    //   decoration: BoxDecoration(
-                    //     boxShadow: const [
-                    //       BoxShadow(
-                    //         blurRadius: 10,
-                    //         color: Colors.grey,
-                    //         spreadRadius: 1,
-                    //       ),
-                    //     ],
-                    //     borderRadius: BorderRadius.circular(30),
-                    //     color: const Color(0xff424657),
-                    //   ),
-                    //   child: const Text(
-                    //     "Download CV",
-                    //     style: TextStyle(
-                    //       letterSpacing: 2,
-                    //       color: Colors.white,
-                    //       fontWeight: FontWeight.bold,
-                    //     ),
-                    //   ),
-                    // ),
                     MouseRegion(
                       onEnter: (_) => setState(() => _isHovering = true),
                       onExit: (_) => setState(() => _isHovering = false),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        transform: _isHovering
-                            ? (Matrix4.identity()
-                                ..translate(0, -5)
-                                ..scale(1.05))
-                            : Matrix4.identity(),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 13,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xff424657),
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: _isHovering ? 20 : 10,
-                              color: Colors.grey,
-                              spreadRadius: _isHovering ? 3 : 1,
+
+                      child: GestureDetector(
+                        onTap: openCV,
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          transform: _isHovering
+                              ? (Matrix4.identity()
+                                  ..translate(0, -5)
+                                  ..scale(1.05))
+                              : Matrix4.identity(),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 13,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xff424657),
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: _isHovering ? 20 : 10,
+                                color: Colors.grey,
+                                spreadRadius: _isHovering ? 3 : 1,
+                              ),
+                            ],
+                          ),
+                          child: const Text(
+                            "Download CV",
+                            style: TextStyle(
+                              letterSpacing: 2,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
-                        ),
-                        child: const Text(
-                          "Download CV",
-                          style: TextStyle(
-                            letterSpacing: 2,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
