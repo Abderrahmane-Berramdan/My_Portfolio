@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:my_portfolio/pages/skills_page.dart';
+import 'package:my_portfolio/widgets/consts.dart';
+import 'package:my_portfolio/widgets/hover_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -13,13 +16,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _isHovering = false;
-  bool _isHovering2 = false;
-
-  final String urlGtihub = "https://github.com/Abderrahmane-Berramdan";
-  final String urlLinkedin =
-      "https://www.linkedin.com/in/abderrahmane-berramdan-6bb225301/";
-  final String urlCV =
-      "https://drive.google.com/file/d/19q6fRdS1WwVftLAm4QvMw8wyY3KSGOqU/view?usp=sharing";
 
   Future<void> openCV() async {
     try {
@@ -116,10 +112,10 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(30),
                 color: const Color(0xff424657),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     "AB",
                     style: TextStyle(
                       color: Colors.white,
@@ -130,78 +126,11 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      TextButton(
-                        style: const ButtonStyle(
-                          overlayColor: WidgetStatePropertyAll(
-                            Colors.transparent,
-                          ),
-                        ),
-                        onPressed: () {},
-                        onHover: (value) {
-                          setState(() {
-                            _isHovering2 = value;
-                          });
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 250),
-                          transform: _isHovering2
-                              ? (Matrix4.identity()..translate(0, -4))
-                              : Matrix4.identity(),
-                          child: const Text(
-                            "Home",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Skills",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Projects",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Experience",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Contact",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                      HoverIcon(text: "Home"),
+                      HoverIcon(text: "Skills"),
+                      HoverIcon(text: "Projects"),
+                      HoverIcon(text: "Experience"),
+                      HoverIcon(text: "Contact"),
                     ],
                   ),
                 ],
@@ -366,6 +295,47 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            const SizedBox(height: 60),
+            Center(
+              child: Column(
+                children: [
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'My ',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Skills',
+                          style: TextStyle(
+                            color: Color(0xff424657), // بنفسجي
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 100,
+                    child: Divider(
+                      color: Color(0xff424657),
+                      height: 50,
+                      thickness: 6,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 80),
+            SkillsPage(),
           ],
         ),
       ),
