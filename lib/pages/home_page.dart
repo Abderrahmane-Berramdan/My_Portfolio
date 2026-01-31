@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xff252734), Color(0xff424657)],
+                  colors: [Color(0xff333646), Color(0xff424657)],
                 ),
                 borderRadius: BorderRadius.circular(30),
                 color: const Color(0xff424657),
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                     ShaderMask(
                       shaderCallback: (bounds) {
                         return const LinearGradient(
-                          colors: [Color(0xff424657), Colors.white],
+                          colors: [Color(0xff333646), Colors.white],
                         ).createShader(bounds);
                       },
                       child: const Text(
@@ -270,7 +270,7 @@ class _HomePageState extends State<HomePage> {
                             vertical: 13,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xff424657),
+                            color: const Color(0xff333646),
                             borderRadius: BorderRadius.circular(30),
                             boxShadow: [
                               BoxShadow(
@@ -313,7 +313,7 @@ class _HomePageState extends State<HomePage> {
                         TextSpan(
                           text: 'Skills',
                           style: TextStyle(
-                            color: Color(0xff424657), // بنفسجي
+                            color: Color(0xff424657),
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
@@ -334,7 +334,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            const SizedBox(height: 80),
+            const SizedBox(height: 30),
             SkillsPage(),
           ],
         ),
