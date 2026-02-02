@@ -69,13 +69,13 @@ class SkillsPage extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: LayoutBuilder(
             builder: (context, constraints) {
               final cols = constraints.maxWidth > 900 ? 2 : 1;
               return Center(
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 1100),
+                  constraints: const BoxConstraints(maxWidth: 1210),
                   child: GridView.builder(
                     shrinkWrap: true,
                     itemCount: list.length,

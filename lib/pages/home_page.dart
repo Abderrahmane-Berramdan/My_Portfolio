@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:my_portfolio/pages/projects_page.dart';
 import 'package:my_portfolio/pages/skills_page.dart';
 import 'package:my_portfolio/widgets/consts.dart';
 import 'package:my_portfolio/widgets/hover_icon.dart';
@@ -130,6 +131,7 @@ class _HomePageState extends State<HomePage> {
                       HoverIcon(text: "Skills"),
                       HoverIcon(text: "Projects"),
                       HoverIcon(text: "Experience"),
+                      HoverIcon(text: "Education"),
                       HoverIcon(text: "Contact"),
                     ],
                   ),
@@ -144,6 +146,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   height: 350,
                   width: 350,
+                  margin: const EdgeInsets.only(left: 17),
                   decoration: BoxDecoration(
                     color: const Color(0xff424657),
                     borderRadius: BorderRadius.circular(200),
@@ -281,7 +284,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           child: const Text(
-                            "Download CV",
+                            "Show my CV",
                             style: TextStyle(
                               letterSpacing: 2,
                               color: Colors.white,
@@ -334,8 +337,48 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            const SizedBox(height: 30),
+            // const SizedBox(height: 30),
             SkillsPage(),
+            const SizedBox(height: 30),
+            Center(
+              child: Column(
+                children: [
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'My ',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Skills',
+                          style: TextStyle(
+                            color: Color(0xff424657),
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 100,
+                    child: Divider(
+                      color: Color(0xff424657),
+                      height: 50,
+                      thickness: 6,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // const SizedBox(height: 30),
+            const SizedBox(height: 600, child: ProjectsPage()),
           ],
         ),
       ),
