@@ -10,7 +10,6 @@ class SkillCard extends StatelessWidget {
     // colors
     final bg = const Color(0xff333646);
     final border = Colors.grey.shade800;
-    // final textGray = Colors.grey.shade300;
 
     return Container(
       padding: const EdgeInsets.all(18),
@@ -30,7 +29,6 @@ class SkillCard extends StatelessWidget {
         spacing: 8,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // icon box
           Row(
             spacing: 15,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

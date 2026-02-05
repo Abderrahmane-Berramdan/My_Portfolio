@@ -46,13 +46,11 @@ class _ProjectCardState extends State<ProjectCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Image / mockup area
               AspectRatio(
                 aspectRatio: 12 / 9,
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    // Image: if it's an asset path start with 'assets/' else network
                     Builder(
                       builder: (context) {
                         final url = p.imageUrl;
