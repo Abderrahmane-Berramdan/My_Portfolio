@@ -524,7 +524,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const EducationSection(),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 70),
                   Center(
                     key: _contactKey,
                     child: Column(

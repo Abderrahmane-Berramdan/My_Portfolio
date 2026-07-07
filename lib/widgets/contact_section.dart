@@ -45,23 +45,31 @@ class ContactSection extends StatelessWidget {
               LayoutBuilder(
                 builder: (context, constraints) {
                   final double width = constraints.maxWidth;
-                  final int crossAxisCount = width > 750 ? 3 : 1;
-                  final double childAspectRatio = width > 750 ? 1.5 : 3.0;
+                  int crossAxisCount = 4;
+                  double childAspectRatio = 1.1;
+
+                  if (width < 600) {
+                    crossAxisCount = 1;
+                    childAspectRatio = 2.8;
+                  } else if (width < 900) {
+                    crossAxisCount = 2;
+                    childAspectRatio = 1.4;
+                  }
 
                   return GridView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: crossAxisCount,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
                       childAspectRatio: childAspectRatio,
                     ),
                     children: [
                       ContactInfoCard(
                         icon: Icons.email_rounded,
                         title: "Email",
-                        value: "berramdan.abderrahmane30@gmail.com",
+                        value: "berramdan.abderrahmane30\n@gmail.com",
                         onTap: () => _launchUrl(
                           context,
                           "mailto:berramdan.abderrahmane30@gmail.com",
@@ -78,40 +86,88 @@ class ContactSection extends StatelessWidget {
                       ),
                       ContactInfoCard(
                         icon: Icons.location_on_rounded,
-                        title: "Address",
+                        title: "Location",
                         value: "Algiers, Algeria",
+                        onTap: () {},
+                      ),
+                      ContactInfoCard(
+                        icon: Icons.check_circle_rounded,
+                        title: "Available for",
+                        value: "Opportunities",
                         onTap: () {},
                       ),
                     ],
                   );
                 },
               ),
-              const SizedBox(height: 30),
-              const Text(
-                "Connect with me",
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
-                ),
+              const SizedBox(height: 40),
+              // Connect divider
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey.shade800,
+                      thickness: 1,
+                      endIndent: 20,
+                    ),
+                  ),
+                  const Text(
+                    "Connect with me",
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey.shade800,
+                      thickness: 1,
+                      indent: 20,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 20,
                 children: [
                   SocialButton(
-                    icon: Icons.code_rounded,
+                    customIcon: Image.asset(
+                      "assets/github-sign.png",
+                      height: 20,
+                      color: Colors.white,
+                    ),
                     label: "GitHub",
+                    backgroundColor: const Color(0xff181A20),
+                    hoverColor: const Color(0xff2A2D37),
                     onTap: () => _launchUrl(
                       context,
                       "https://github.com/Abderrahmane-Berramdan",
                     ),
                   ),
                   SocialButton(
-                    icon: Icons.business_center_rounded,
+                    customIcon: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                      child: const Text(
+                        "in",
+                        style: TextStyle(
+                          color: Color(0xff0A66C2),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          height: 1.1,
+                        ),
+                      ),
+                    ),
                     label: "LinkedIn",
+                    backgroundColor: const Color(0xff0A66C2),
+                    hoverColor: const Color(0xff1B7BDD),
                     onTap: () => _launchUrl(
                       context,
                       "https://www.linkedin.com/in/abderrahmane-berramdan-6bb225301/",
@@ -180,12 +236,27 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  widget.icon,
-                  color: primaryColor.withValues(alpha: 0.95),
-                  size: 28,
+                Container(
+                  width: 52,
+                  height: 52,
+                  decoration: BoxDecoration(
+                    color: primaryColor,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: primaryColor.withValues(alpha: 0.35),
+                        blurRadius: 10,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    widget.icon,
+                    color: Colors.white,
+                    size: 24,
+                  ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 14),
                 Text(
                   widget.title,
                   style: const TextStyle(
@@ -201,7 +272,8 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 13,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
+                    height: 1.3,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -216,14 +288,18 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
 }
 
 class SocialButton extends StatefulWidget {
-  final IconData icon;
+  final Widget customIcon;
   final String label;
+  final Color backgroundColor;
+  final Color hoverColor;
   final VoidCallback onTap;
 
   const SocialButton({
     super.key,
-    required this.icon,
+    required this.customIcon,
     required this.label,
+    required this.backgroundColor,
+    required this.hoverColor,
     required this.onTap,
   });
 
@@ -243,14 +319,15 @@ class _SocialButtonState extends State<SocialButton> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
           decoration: BoxDecoration(
-            color: _isHovered ? Colors.blue.withValues(alpha: 0.8) : const Color(0xff333646),
+            color: _isHovered ? widget.hoverColor : widget.backgroundColor,
             borderRadius: BorderRadius.circular(30),
+            border: Border.all(color: Colors.grey.shade800),
             boxShadow: [
               BoxShadow(
                 blurRadius: _isHovered ? 15 : 5,
-                color: _isHovered ? Colors.blue.withValues(alpha: 0.4) : Colors.black26,
+                color: _isHovered ? widget.hoverColor.withValues(alpha: 0.4) : Colors.black26,
                 spreadRadius: _isHovered ? 2 : 1,
               ),
             ],
@@ -258,12 +335,8 @@ class _SocialButtonState extends State<SocialButton> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
-                widget.icon,
-                color: Colors.white,
-                size: 20,
-              ),
-              const SizedBox(width: 8),
+              widget.customIcon,
+              const SizedBox(width: 10),
               Text(
                 widget.label,
                 style: const TextStyle(
