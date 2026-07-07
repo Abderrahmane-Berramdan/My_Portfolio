@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:my_portfolio/widgets/scroll_reveal.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -66,35 +68,69 @@ class ContactSection extends StatelessWidget {
                       childAspectRatio: childAspectRatio,
                     ),
                     children: [
-                      ContactInfoCard(
-                        icon: Icons.email_rounded,
-                        title: "Email",
-                        value: "berramdan.abderrahmane30\n@gmail.com",
-                        onTap: () => _launchUrl(
-                          context,
-                          "mailto:berramdan.abderrahmane30@gmail.com",
+                      ScrollReveal(
+                        duration: const Duration(milliseconds: 500),
+                        animationBuilder: (child) => ZoomIn(
+                          duration: const Duration(milliseconds: 500),
+                          child: child,
+                        ),
+                        child: ContactInfoCard(
+                          icon: Icons.email_rounded,
+                          title: "Email",
+                          value: "berramdan.abderrahmane30\n@gmail.com",
+                          onTap: () => _launchUrl(
+                            context,
+                            "mailto:berramdan.abderrahmane30@gmail.com",
+                          ),
                         ),
                       ),
-                      ContactInfoCard(
-                        icon: Icons.phone_rounded,
-                        title: "Phone",
-                        value: "+213 696750847",
-                        onTap: () => _launchUrl(
-                          context,
-                          "tel:+213696750847",
+                      ScrollReveal(
+                        duration: const Duration(milliseconds: 500),
+                        delay: const Duration(milliseconds: 100),
+                        animationBuilder: (child) => ZoomIn(
+                          duration: const Duration(milliseconds: 500),
+                          delay: const Duration(milliseconds: 100),
+                          child: child,
+                        ),
+                        child: ContactInfoCard(
+                          icon: Icons.phone_rounded,
+                          title: "Phone",
+                          value: "+213 696750847",
+                          onTap: () => _launchUrl(
+                            context,
+                            "tel:+213696750847",
+                          ),
                         ),
                       ),
-                      ContactInfoCard(
-                        icon: Icons.location_on_rounded,
-                        title: "Location",
-                        value: "Algiers, Algeria",
-                        onTap: () {},
+                      ScrollReveal(
+                        duration: const Duration(milliseconds: 500),
+                        delay: const Duration(milliseconds: 200),
+                        animationBuilder: (child) => ZoomIn(
+                          duration: const Duration(milliseconds: 500),
+                          delay: const Duration(milliseconds: 200),
+                          child: child,
+                        ),
+                        child: ContactInfoCard(
+                          icon: Icons.location_on_rounded,
+                          title: "Location",
+                          value: "Algiers, Algeria",
+                          onTap: () {},
+                        ),
                       ),
-                      ContactInfoCard(
-                        icon: Icons.check_circle_rounded,
-                        title: "Available for",
-                        value: "Opportunities",
-                        onTap: () {},
+                      ScrollReveal(
+                        duration: const Duration(milliseconds: 500),
+                        delay: const Duration(milliseconds: 300),
+                        animationBuilder: (child) => ZoomIn(
+                          duration: const Duration(milliseconds: 500),
+                          delay: const Duration(milliseconds: 300),
+                          child: child,
+                        ),
+                        child: ContactInfoCard(
+                          icon: Icons.check_circle_rounded,
+                          title: "Available for",
+                          value: "Opportunities",
+                          onTap: () {},
+                        ),
                       ),
                     ],
                   );
@@ -134,43 +170,61 @@ class ContactSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 20,
                 children: [
-                  SocialButton(
-                    customIcon: Image.asset(
-                      "assets/github-sign.png",
-                      height: 20,
-                      color: Colors.white,
+                  ScrollReveal(
+                    duration: const Duration(milliseconds: 600),
+                    delay: const Duration(milliseconds: 400),
+                    animationBuilder: (child) => BounceInUp(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 400),
+                      child: child,
                     ),
-                    label: "GitHub",
-                    backgroundColor: const Color(0xff181A20),
-                    hoverColor: const Color(0xff2A2D37),
-                    onTap: () => _launchUrl(
-                      context,
-                      "https://github.com/Abderrahmane-Berramdan",
+                    child: SocialButton(
+                      customIcon: Image.asset(
+                        "assets/github-sign.png",
+                        height: 20,
+                        color: Colors.white,
+                      ),
+                      label: "GitHub",
+                      backgroundColor: const Color(0xff181A20),
+                      hoverColor: const Color(0xff2A2D37),
+                      onTap: () => _launchUrl(
+                        context,
+                        "https://github.com/Abderrahmane-Berramdan",
+                      ),
                     ),
                   ),
-                  SocialButton(
-                    customIcon: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                      child: const Text(
-                        "in",
-                        style: TextStyle(
-                          color: Color(0xff0A66C2),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                          height: 1.1,
+                  ScrollReveal(
+                    duration: const Duration(milliseconds: 600),
+                    delay: const Duration(milliseconds: 500),
+                    animationBuilder: (child) => BounceInUp(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 500),
+                      child: child,
+                    ),
+                    child: SocialButton(
+                      customIcon: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: const Text(
+                          "in",
+                          style: TextStyle(
+                            color: Color(0xff0A66C2),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                            height: 1.1,
+                          ),
                         ),
                       ),
-                    ),
-                    label: "LinkedIn",
-                    backgroundColor: const Color(0xff0A66C2),
-                    hoverColor: const Color(0xff1B7BDD),
-                    onTap: () => _launchUrl(
-                      context,
-                      "https://www.linkedin.com/in/abderrahmane-berramdan-6bb225301/",
+                      label: "LinkedIn",
+                      backgroundColor: const Color(0xff0A66C2),
+                      hoverColor: const Color(0xff1B7BDD),
+                      onTap: () => _launchUrl(
+                        context,
+                        "https://www.linkedin.com/in/abderrahmane-berramdan-6bb225301/",
+                      ),
                     ),
                   ),
                 ],

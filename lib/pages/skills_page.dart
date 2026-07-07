@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/widgets/scroll_reveal.dart';
 import 'package:my_portfolio/models/skill.dart';
 import 'package:my_portfolio/widgets/skill_card.dart';
 
@@ -87,7 +88,11 @@ class SkillsPage extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       final skill = list[index];
-                      return SkillCard(skill: skill);
+                      return ScrollReveal(
+                        duration: const Duration(milliseconds: 600),
+                        delay: Duration(milliseconds: 100 * index),
+                        child: SkillCard(skill: skill),
+                      );
                     },
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/widgets/scroll_reveal.dart';
 import 'package:my_portfolio/models/project.dart';
 import 'package:my_portfolio/widgets/project_card.dart';
 
@@ -41,7 +42,11 @@ class ProjectsGrid extends StatelessWidget {
           itemCount: projects.length,
           itemBuilder: (context, index) {
             final p = projects[index];
-            return ProjectCard(project: p);
+            return ScrollReveal(
+              duration: const Duration(milliseconds: 600),
+              delay: Duration(milliseconds: 150 * index),
+              child: ProjectCard(project: p),
+            );
           },
         );
       },

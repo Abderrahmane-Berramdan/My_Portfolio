@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:my_portfolio/widgets/scroll_reveal.dart';
 
 class EducationItem {
   final String period;
@@ -39,9 +41,18 @@ class EducationSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: items.length,
             itemBuilder: (context, index) {
-              return SizedBox(
-                width: 400,
-                child: EducationCard(item: items[index]),
+              return ScrollReveal(
+                duration: const Duration(milliseconds: 600),
+                delay: Duration(milliseconds: 150 * index),
+                animationBuilder: (child) => FadeInLeft(
+                  duration: const Duration(milliseconds: 600),
+                  delay: Duration(milliseconds: 150 * index),
+                  child: child,
+                ),
+                child: SizedBox(
+                  width: 400,
+                  child: EducationCard(item: items[index]),
+                ),
               );
             },
             // children: items.map((item) => EducationCard(item: item)).toList(),
