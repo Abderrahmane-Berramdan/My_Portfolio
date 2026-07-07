@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:my_portfolio/widgets/scroll_reveal.dart';
 
 class ExperienceItem {
   final String period;
@@ -71,9 +73,18 @@ class ExperienceSection extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return TimelineItemWidget(
-                    item: items[index],
-                    isLast: index == items.length - 1,
+                  return ScrollReveal(
+                    duration: const Duration(milliseconds: 600),
+                    delay: Duration(milliseconds: 150 * index),
+                    animationBuilder: (child) => FadeInLeft(
+                      duration: const Duration(milliseconds: 600),
+                      delay: Duration(milliseconds: 150 * index),
+                      child: child,
+                    ),
+                    child: TimelineItemWidget(
+                      item: items[index],
+                      isLast: index == items.length - 1,
+                    ),
                   );
                 },
               ),
