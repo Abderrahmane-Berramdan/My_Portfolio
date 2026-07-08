@@ -22,7 +22,7 @@ final List<Project> sampleProjects = [
     description:
         'Mobile platform to find and manage internships with student profiles and company dashboards.',
     tech: ['Flutter', 'FastAPI', 'SQLite'],
-    imageUrl: 'https://picsum.photos/600/300?random=1',
+    imageUrl: 'placeholder',
     githubUrl: 'https://github.com/yourname/internship-manager',
     liveDemoUrl: 'https://your-demo-link.example.com',
   ),
@@ -31,7 +31,7 @@ final List<Project> sampleProjects = [
     description:
         'A lightweight notes app with categories, search and local persistence.',
     tech: ['Flutter', 'Provider', 'Hive'],
-    imageUrl: 'https://picsum.photos/600/300?random=2',
+    imageUrl: 'placeholder',
     githubUrl: 'https://github.com/yourname/notes-app',
     liveDemoUrl: 'https://your-demo-link.example.com',
   ),
@@ -40,7 +40,7 @@ final List<Project> sampleProjects = [
     description:
         'App for browsing and booking local events with integrated payments.',
     tech: ['Flutter', 'Stripe', 'Node.js'],
-    imageUrl: 'https://picsum.photos/600/300?random=3',
+    imageUrl: 'placeholder',
     githubUrl: 'https://github.com/yourname/event-booking',
     liveDemoUrl: 'https://your-demo-link.example.com',
   ),

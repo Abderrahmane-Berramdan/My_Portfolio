@@ -14,12 +14,12 @@ class SkillCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: bg.withOpacity(0.5),
+        color: bg.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: border),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.35),
+            color: Colors.black.withValues(alpha: 0.35),
             blurRadius: 10,
             offset: const Offset(0, 6),
           ),
@@ -41,10 +41,10 @@ class SkillCard extends StatelessWidget {
                     height: 72,
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: skill.color.withOpacity(0.4),
+                      color: skill.color.withValues(alpha: 0.4),
                       boxShadow: [
                         BoxShadow(
-                          color: skill.color.withOpacity(0.35),
+                          color: skill.color.withValues(alpha: 0.35),
                           blurRadius: 12,
                           spreadRadius: 3,
                         ),
@@ -72,13 +72,13 @@ class SkillCard extends StatelessWidget {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color: skill.color.withOpacity(0.15),
+                          color: skill.color.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
                           skill.tag,
                           style: TextStyle(
-                            color: skill.color.withOpacity(0.95),
+                            color: skill.color.withValues(alpha: 0.95),
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                           ),
@@ -98,7 +98,7 @@ class SkillCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
-                      color: skill.color.withOpacity(0.35),
+                      color: skill.color.withValues(alpha: 0.35),
                       blurRadius: 12,
                       spreadRadius: 5,
                     ),
@@ -129,7 +129,7 @@ class SkillCard extends StatelessWidget {
             child: Container(
               height: 10,
               width: double.infinity,
-              color: skill.color.withOpacity(0.3),
+              color: skill.color.withValues(alpha: 0.3),
               child: FractionallySizedBox(
                 alignment: Alignment.centerLeft,
                 widthFactor: skill.percent / 100,

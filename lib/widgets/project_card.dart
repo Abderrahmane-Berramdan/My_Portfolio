@@ -54,7 +54,9 @@ class _ProjectCardState extends State<ProjectCard> {
                     Builder(
                       builder: (context) {
                         final url = p.imageUrl;
-                        if (url.startsWith('assets/')) {
+                        if (url == 'placeholder' || url.isEmpty) {
+                          return ProjectPlaceholder(title: p.title);
+                        } else if (url.startsWith('assets/')) {
                           return Image.asset(url, fit: BoxFit.cover);
                         } else {
                           return Image.network(
@@ -106,13 +108,13 @@ class _ProjectCardState extends State<ProjectCard> {
                                 vertical: 6,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.blue.withOpacity(0.15),
+                                color: Colors.blue.withValues(alpha: 0.15),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
                                 t,
                                 style: TextStyle(
-                                  color: Colors.blue.withOpacity(0.95),
+                                  color: Colors.blue.withValues(alpha: 0.95),
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -146,8 +148,8 @@ class _ProjectCardState extends State<ProjectCard> {
                               ),
                               backgroundColor: WidgetStatePropertyAll(
                                 isHovering1
-                                    ? Colors.blue.withOpacity(0.7)
-                                    : Colors.blue.withOpacity(0.8),
+                                    ? Colors.blue.withValues(alpha: 0.7)
+                                    : Colors.blue.withValues(alpha: 0.8),
                               ),
                               shape: WidgetStatePropertyAll(
                                 RoundedRectangleBorder(
@@ -201,7 +203,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                 Icon(
                                   Icons.open_in_new,
                                   size: 25,
-                                  color: Colors.blue.withOpacity(0.8),
+                                  color: Colors.blue.withValues(alpha: 0.8),
                                 ),
                                 const Text(
                                   'Live Demo',
@@ -226,4 +228,116 @@ class _ProjectCardState extends State<ProjectCard> {
       ),
     );
   }
+}
+
+class ProjectPlaceholder extends StatelessWidget {
+  final String title;
+  const ProjectPlaceholder({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xff1E1F29),
+            Color(0xff2A2D3E),
+          ],
+        ),
+      ),
+      child: Stack(
+        children: [
+          // Blueprint grid lines
+          Positioned.fill(
+            child: CustomPaint(
+              painter: GridPainter(),
+            ),
+          ),
+          // Geometric background details
+          Positioned(
+            right: -20,
+            top: -20,
+            child: Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.blue.withValues(alpha: 0.03),
+              ),
+            ),
+          ),
+          Positioned(
+            left: -40,
+            bottom: -40,
+            child: Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.blue.withValues(alpha: 0.02),
+              ),
+            ),
+          ),
+          // Center content
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.blue.withValues(alpha: 0.08),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.blue.withValues(alpha: 0.2),
+                      width: 1.5,
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.code_rounded,
+                    color: Colors.blue,
+                    size: 32,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  title.toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.4),
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class GridPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white.withValues(alpha: 0.025)
+      ..strokeWidth = 1.0;
+
+    const double step = 20.0;
+
+    for (double i = 0; i < size.width; i += step) {
+      canvas.drawLine(Offset(i, 0), Offset(i, size.height), paint);
+    }
+    for (double i = 0; i < size.height; i += step) {
+      canvas.drawLine(Offset(0, i), Offset(size.width, i), paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

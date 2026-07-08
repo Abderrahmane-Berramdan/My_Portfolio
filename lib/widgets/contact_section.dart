@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:my_portfolio/widgets/scroll_reveal.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -78,6 +79,7 @@ class ContactSection extends StatelessWidget {
                           icon: Icons.email_rounded,
                           title: "Email",
                           value: "berramdan.abderrahmane30\n@gmail.com",
+                          copyText: "berramdan.abderrahmane30@gmail.com",
                           onTap: () => _launchUrl(
                             context,
                             "mailto:berramdan.abderrahmane30@gmail.com",
@@ -227,6 +229,47 @@ class ContactSection extends StatelessWidget {
                       ),
                     ),
                   ),
+                  ScrollReveal(
+                    duration: const Duration(milliseconds: 600),
+                    delay: const Duration(milliseconds: 600),
+                    animationBuilder: (child) => BounceInUp(
+                      duration: const Duration(milliseconds: 600),
+                      delay: const Duration(milliseconds: 600),
+                      child: child,
+                    ),
+                    child: SocialButton(
+                      customIcon: const SizedBox(
+                        width: 22,
+                        height: 22,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Icon(
+                              Icons.chat_bubble_rounded,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            Positioned(
+                              top: 3.5,
+                              left: 4.5,
+                              child: Icon(
+                                Icons.phone,
+                                color: Color(0xff25D366),
+                                size: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      label: "WhatsApp",
+                      backgroundColor: const Color(0xff25D366),
+                      hoverColor: const Color(0xff20BA5A),
+                      onTap: () => _launchUrl(
+                        context,
+                        "https://wa.me/213696750847",
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -242,6 +285,7 @@ class ContactInfoCard extends StatefulWidget {
   final String title;
   final String value;
   final VoidCallback onTap;
+  final String? copyText;
 
   const ContactInfoCard({
     super.key,
@@ -249,6 +293,7 @@ class ContactInfoCard extends StatefulWidget {
     required this.title,
     required this.value,
     required this.onTap,
+    this.copyText,
   });
 
   @override
@@ -320,17 +365,66 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
                   ),
                 ),
                 const SizedBox(height: 6),
-                Text(
-                  widget.value,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    height: 1.3,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        widget.value,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          height: 1.3,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    if (widget.copyText != null) ...[
+                      const SizedBox(width: 8),
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            Clipboard.setData(ClipboardData(text: widget.copyText!)).then((_) {
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.check_circle_rounded,
+                                          color: Colors.greenAccent,
+                                          size: 20,
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Text(
+                                          '${widget.title} copied!',
+                                          style: const TextStyle(color: Colors.white, fontSize: 14),
+                                        ),
+                                      ],
+                                    ),
+                                    behavior: SnackBarBehavior.floating,
+                                    backgroundColor: const Color(0xff333646),
+                                    duration: const Duration(seconds: 2),
+                                    width: 250,
+                                  ),
+                                );
+                              }
+                            });
+                          },
+                          child: Icon(
+                            Icons.copy_rounded,
+                            color: Colors.white.withValues(alpha: 0.7),
+                            size: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
               ],
             ),
