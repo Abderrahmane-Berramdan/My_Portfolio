@@ -23,7 +23,7 @@ class EducationSection extends StatelessWidget {
       degree: "Licence Professionnelle – Mobile Application Development",
       institution: "Ahmed Ben Bella University Oran 1",
       details:
-          "Focused on mobile architecture, Flutter application lifecycle, UI design principles, SQLite databases, and REST API integration.",
+          "Developed a broad academic background in computer science and mobile application development, covering algorithms, OOP, SQL databases, computer networks, Android and mobile systems, UI/UX, software architecture, cybersecurity, data mining, cloud technologies, CMS, SEO, and collaborative project work.",
     ),
   ];
 
@@ -34,7 +34,7 @@ class EducationSection extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: double.infinity,
-        height: 390,
+        height: 420,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: ListView.builder(
@@ -156,7 +156,7 @@ class _EducationCardState extends State<EducationCard> {
                   //     fontSize: 16,
                   //     fontWeight: FontWeight.bold,
                   //   ),
-                  // ), 
+                  // ),
                   // const SizedBox(height: 8),
                   // Text(
                   //   widget.item.degree,
@@ -179,11 +179,7 @@ class _EducationCardState extends State<EducationCard> {
                   Row(
                     spacing: 8,
                     children: [
-                      Icon(
-                        Icons.calendar_today,
-                        color: primaryColor,
-                        size: 16,
-                      ),
+                      Icon(Icons.calendar_today, color: primaryColor, size: 16),
                       Text(
                         widget.item.period,
                         style: TextStyle(
@@ -194,14 +190,11 @@ class _EducationCardState extends State<EducationCard> {
                       ),
                     ],
                   ),
-                  // Container(
-                  //   width: 60,
-                  //   height: 3,
-                  //   color: primaryColor,
-                  //   margin: const EdgeInsets.symmetric(vertical: 14),
-                  // ),
+                  const SizedBox(height: 3),
                   Text(
                     widget.item.details,
+                    maxLines: 7,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Colors.grey.shade300,
                       fontSize: 14,
