@@ -28,7 +28,7 @@ class ExperienceSection extends StatelessWidget {
       details: [
         "Refactored and cleaned the codebase to improve readability, maintainability, and overall project structure.",
         "Developed new Flutter UI screens and reusable widgets while following the existing design system.",
-        "Debugged and resolved application issues in collaboration with the development team."
+        "Debugged and resolved application issues in collaboration with the development team.",
       ],
     ),
     ExperienceItem(
@@ -40,7 +40,7 @@ class ExperienceSection extends StatelessWidget {
         "Redesigned an existing mobile application to improve its user interface, usability, and overall visual consistency.",
         "Refactored and reorganized the existing codebase to enhance maintainability and code quality.",
         "Developed a Flutter-based QR code scanning application for company invoices to automate data extraction and processing.",
-        "Built two implementations of the application: a local version using Sqflite and a cloud-connected version using Firebase."
+        "Built two implementations of the application: a local version using Sqflite and a cloud-connected version using Firebase.",
       ],
     ),
     ExperienceItem(
@@ -51,7 +51,7 @@ class ExperienceSection extends StatelessWidget {
       details: [
         "Troubleshot workstations and field printers; provided on-site technical support to port staff.",
         "Configured basic network setups and monitored device connectivity.",
-        "Created a daily troubleshooting checklist that improved first-contact resolution."
+        "Created a daily troubleshooting checklist that improved first-contact resolution.",
       ],
     ),
   ];
@@ -115,7 +115,8 @@ class _TimelineItemWidgetState extends State<TimelineItemWidget> {
   @override
   Widget build(BuildContext context) {
     final Color primaryColor = Colors.blue;
-    
+    final isMobile = MediaQuery.of(context).size.width < 700;
+
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -142,14 +143,11 @@ class _TimelineItemWidgetState extends State<TimelineItemWidget> {
               ),
               if (!widget.isLast)
                 Expanded(
-                  child: Container(
-                    width: 3,
-                    color: Colors.grey.shade800,
-                  ),
+                  child: Container(width: 3, color: Colors.grey.shade800),
                 ),
             ],
           ),
-          const SizedBox(width: 24),
+          SizedBox(width: isMobile ? 12 : 24),
           // Content Card
           Expanded(
             child: Padding(
@@ -178,11 +176,13 @@ class _TimelineItemWidgetState extends State<TimelineItemWidget> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Wrap(
+                          spacing: 12,
+                          runSpacing: 10,
+                          crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Expanded(
+                            SizedBox(
+                              width: isMobile ? 220 : 420,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -227,35 +227,42 @@ class _TimelineItemWidgetState extends State<TimelineItemWidget> {
                           ],
                         ),
                         const SizedBox(height: 16),
-                        ...widget.item.details.map((detail) => Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 6.0, right: 8.0),
-                                    child: Container(
-                                      width: 6,
-                                      height: 6,
-                                      decoration: BoxDecoration(
-                                        color: primaryColor.withValues(alpha: 0.7),
-                                        shape: BoxShape.circle,
+                        ...widget.item.details.map(
+                          (detail) => Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 6.0,
+                                    right: 8.0,
+                                  ),
+                                  child: Container(
+                                    width: 6,
+                                    height: 6,
+                                    decoration: BoxDecoration(
+                                      color: primaryColor.withValues(
+                                        alpha: 0.7,
                                       ),
+                                      shape: BoxShape.circle,
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Text(
-                                      detail,
-                                      style: TextStyle(
-                                        color: Colors.grey.shade300,
-                                        fontSize: 14,
-                                        height: 1.4,
-                                      ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    detail,
+                                    style: TextStyle(
+                                      color: Colors.grey.shade300,
+                                      fontSize: 14,
+                                      height: 1.4,
                                     ),
                                   ),
-                                ],
-                              ),
-                            )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
