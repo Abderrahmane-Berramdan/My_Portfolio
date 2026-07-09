@@ -29,9 +29,9 @@ class ContactSection extends StatelessWidget {
       }
     } catch (e) {
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("An error occurred: $e")),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("An error occurred: $e")));
       }
     }
   }
@@ -53,7 +53,7 @@ class ContactSection extends StatelessWidget {
 
                   if (width < 600) {
                     crossAxisCount = 1;
-                    childAspectRatio = 2.8;
+                    childAspectRatio = 2.4;
                   } else if (width < 900) {
                     crossAxisCount = 2;
                     childAspectRatio = 1.4;
@@ -98,10 +98,7 @@ class ContactSection extends StatelessWidget {
                           icon: Icons.phone_rounded,
                           title: "Phone",
                           value: "+213 696750847",
-                          onTap: () => _launchUrl(
-                            context,
-                            "tel:+213696750847",
-                          ),
+                          onTap: () => _launchUrl(context, "tel:+213696750847"),
                         ),
                       ),
                       ScrollReveal(
@@ -168,9 +165,10 @@ class ContactSection extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Wrap(
+                alignment: WrapAlignment.center,
                 spacing: 20,
+                runSpacing: 14,
                 children: [
                   ScrollReveal(
                     duration: const Duration(milliseconds: 600),
@@ -205,7 +203,10 @@ class ContactSection extends StatelessWidget {
                     ),
                     child: SocialButton(
                       customIcon: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 1,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(3),
@@ -264,10 +265,8 @@ class ContactSection extends StatelessWidget {
                       label: "WhatsApp",
                       backgroundColor: const Color(0xff25D366),
                       hoverColor: const Color(0xff20BA5A),
-                      onTap: () => _launchUrl(
-                        context,
-                        "https://wa.me/213696750847",
-                      ),
+                      onTap: () =>
+                          _launchUrl(context, "https://wa.me/213696750847"),
                     ),
                   ),
                 ],
@@ -322,7 +321,9 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
               color: const Color(0xff333646).withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: _isHovered ? primaryColor.withValues(alpha: 0.5) : Colors.grey.shade800,
+                color: _isHovered
+                    ? primaryColor.withValues(alpha: 0.5)
+                    : Colors.grey.shade800,
               ),
               boxShadow: [
                 BoxShadow(
@@ -349,11 +350,7 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
                       ),
                     ],
                   ),
-                  child: Icon(
-                    widget.icon,
-                    color: Colors.white,
-                    size: 24,
-                  ),
+                  child: Icon(widget.icon, color: Colors.white, size: 24),
                 ),
                 const SizedBox(height: 14),
                 Text(
@@ -375,7 +372,7 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 13,
+                          fontSize: 12,
                           fontWeight: FontWeight.w600,
                           height: 1.3,
                         ),
@@ -389,7 +386,9 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           onTap: () {
-                            Clipboard.setData(ClipboardData(text: widget.copyText!)).then((_) {
+                            Clipboard.setData(
+                              ClipboardData(text: widget.copyText!),
+                            ).then((_) {
                               if (context.mounted) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -403,7 +402,10 @@ class _ContactInfoCardState extends State<ContactInfoCard> {
                                         const SizedBox(width: 8),
                                         Text(
                                           '${widget.title} copied!',
-                                          style: const TextStyle(color: Colors.white, fontSize: 14),
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -475,7 +477,9 @@ class _SocialButtonState extends State<SocialButton> {
             boxShadow: [
               BoxShadow(
                 blurRadius: _isHovered ? 15 : 5,
-                color: _isHovered ? widget.hoverColor.withValues(alpha: 0.4) : Colors.black26,
+                color: _isHovered
+                    ? widget.hoverColor.withValues(alpha: 0.4)
+                    : Colors.black26,
                 spreadRadius: _isHovered ? 2 : 1,
               ),
             ],
