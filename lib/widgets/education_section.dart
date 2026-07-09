@@ -36,7 +36,7 @@ class EducationSection extends StatelessWidget {
         width: double.infinity,
         height: 420,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: items.length,
@@ -50,7 +50,7 @@ class EducationSection extends StatelessWidget {
                   child: child,
                 ),
                 child: SizedBox(
-                  width: 400,
+                  width: 450,
                   child: EducationCard(item: items[index]),
                 ),
               );
