@@ -74,17 +74,19 @@ class SkillsPage extends StatelessWidget {
           child: LayoutBuilder(
             builder: (context, constraints) {
               final cols = constraints.maxWidth > 900 ? 2 : 1;
+              final isMobile = constraints.maxWidth < 600;
               return Center(
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 1210),
                   child: GridView.builder(
                     shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: list.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: cols,
                       mainAxisExtent: 200,
-                      crossAxisSpacing: 30,
-                      mainAxisSpacing: 30,
+                      crossAxisSpacing: isMobile ? 16 : 30,
+                      mainAxisSpacing: isMobile ? 16 : 30,
                     ),
                     itemBuilder: (context, index) {
                       final skill = list[index];
