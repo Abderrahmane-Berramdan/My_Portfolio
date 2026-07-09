@@ -9,17 +9,18 @@ class ProjectsGrid extends StatelessWidget {
 
   int _calculateCrossAxisCount(double width) {
     if (width >= 1200) return 3;
-    if (width >= 900) return 3;
+    if (width >= 900) return 2;
     if (width >= 700) return 2;
     return 1;
   }
 
   double _calculateChildAspect(double width) {
     // Adjust card height vs width so the UI looks balanced
-    if (width >= 1200) return 0.75;
-    if (width >= 900) return 0.78;
-    if (width >= 700) return 0.9;
-    return 1.05;
+    if (width >= 1200) return 0.84;
+    if (width >= 900) return 0.87;
+    if (width >= 700) return 0.8;
+    if (width >= 500) return 1;
+    return 0.9;
   }
 
   @override
@@ -29,7 +30,6 @@ class ProjectsGrid extends StatelessWidget {
         final width = constraints.maxWidth;
         final crossAxisCount = _calculateCrossAxisCount(width);
         final childAspect = _calculateChildAspect(width);
-
         return GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

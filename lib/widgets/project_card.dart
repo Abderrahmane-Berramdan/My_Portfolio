@@ -47,7 +47,7 @@ class _ProjectCardState extends State<ProjectCard> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               AspectRatio(
-                aspectRatio: 12 / 9,
+                aspectRatio: 12 / 7,
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
@@ -126,15 +126,15 @@ class _ProjectCardState extends State<ProjectCard> {
                     Text(
                       p.description,
                       maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(color: Colors.white),
                     ),
                     const SizedBox(height: 10),
                     // Buttons
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      spacing: 20,
                       children: [
-                        SizedBox(
-                          width: 160,
+                        Expanded(
                           child: ElevatedButton(
                             onHover: (value) {
                               setState(() {
@@ -158,7 +158,8 @@ class _ProjectCardState extends State<ProjectCard> {
                               ),
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              spacing: 15,
                               children: [
                                 SizedBox(
                                   height: 25,
@@ -178,8 +179,7 @@ class _ProjectCardState extends State<ProjectCard> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 160,
+                        Expanded(
                           child: ElevatedButton(
                             onHover: (value) {
                               setState(() {
@@ -198,7 +198,8 @@ class _ProjectCardState extends State<ProjectCard> {
                               ),
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.center,
+ spacing: 15,
                               children: [
                                 Icon(
                                   Icons.open_in_new,
@@ -241,20 +242,13 @@ class ProjectPlaceholder extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            Color(0xff1E1F29),
-            Color(0xff2A2D3E),
-          ],
+          colors: [Color(0xff1E1F29), Color(0xff2A2D3E)],
         ),
       ),
       child: Stack(
         children: [
           // Blueprint grid lines
-          Positioned.fill(
-            child: CustomPaint(
-              painter: GridPainter(),
-            ),
-          ),
+          Positioned.fill(child: CustomPaint(painter: GridPainter())),
           // Geometric background details
           Positioned(
             right: -20,
