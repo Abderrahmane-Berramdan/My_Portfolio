@@ -199,7 +199,7 @@ class _ProjectCardState extends State<ProjectCard> {
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
- spacing: 15,
+                              spacing: 15,
                               children: [
                                 Icon(
                                   Icons.open_in_new,
