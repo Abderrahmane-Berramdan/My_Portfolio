@@ -50,7 +50,7 @@ class EducationSection extends StatelessWidget {
                   child: child,
                 ),
                 child: SizedBox(
-                  width: 410,
+                  width: 390,
                   child: EducationCard(item: items[index]),
                 ),
               );

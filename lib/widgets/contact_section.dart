@@ -53,7 +53,7 @@ class ContactSection extends StatelessWidget {
 
                   if (width < 600) {
                     crossAxisCount = 1;
-                    childAspectRatio = 1;
+                    childAspectRatio = 1.4;
                   } else if (width < 900) {
                     crossAxisCount = 2;
                     childAspectRatio = 1.15;
