@@ -48,8 +48,8 @@ class ContactSection extends StatelessWidget {
               LayoutBuilder(
                 builder: (context, constraints) {
                   final double width = constraints.maxWidth;
-                  int crossAxisCount = 4;
-                  double childAspectRatio = 0.85;
+                  int crossAxisCount = 3;
+                  double childAspectRatio =1.2;
 
                   if (width < 600) {
                     crossAxisCount = 1;
@@ -112,161 +112,161 @@ class ContactSection extends StatelessWidget {
                           onTap: () {},
                         ),
                       ),
-                      ScrollReveal(
-                        duration: const Duration(milliseconds: 500),
-                        delay: const Duration(milliseconds: 300),
-                        animationBuilder: (child) => ZoomIn(
-                          duration: const Duration(milliseconds: 500),
-                          delay: const Duration(milliseconds: 300),
-                          child: child,
-                        ),
-                        child: ContactInfoCard(
-                          icon: Icons.check_circle_rounded,
-                          title: "Available for",
-                          value: "Opportunities",
-                          onTap: () {},
-                        ),
-                      ),
+                      // ScrollReveal(
+                      //   duration: const Duration(milliseconds: 500),
+                      //   delay: const Duration(milliseconds: 300),
+                      //   animationBuilder: (child) => ZoomIn(
+                      //     duration: const Duration(milliseconds: 500),
+                      //     delay: const Duration(milliseconds: 300),
+                      //     child: child,
+                      //   ),
+                      //   child: ContactInfoCard(
+                      //     icon: Icons.check_circle_rounded,
+                      //     title: "Available for",
+                      //     value: "Opportunities",
+                      //     onTap: () {},
+                      //   ),
+                      // ),
                     ],
                   );
                 },
               ),
               const SizedBox(height: 40),
-              // Connect divider
-              Row(
-                children: [
-                  Expanded(
-                    child: Divider(
-                      color: Colors.grey.shade800,
-                      thickness: 1,
-                      endIndent: 20,
-                    ),
-                  ),
-                  const Text(
-                    "Connect with me",
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.2,
-                    ),
-                  ),
-                  Expanded(
-                    child: Divider(
-                      color: Colors.grey.shade800,
-                      thickness: 1,
-                      indent: 20,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              Wrap(
-                alignment: WrapAlignment.center,
-                spacing: 20,
-                runSpacing: 14,
-                children: [
-                  ScrollReveal(
-                    duration: const Duration(milliseconds: 600),
-                    delay: const Duration(milliseconds: 400),
-                    animationBuilder: (child) => BounceInUp(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 400),
-                      child: child,
-                    ),
-                    child: SocialButton(
-                      customIcon: Image.asset(
-                        "assets/github-sign.png",
-                        height: 20,
-                        color: Colors.white,
-                      ),
-                      label: "GitHub",
-                      backgroundColor: const Color(0xff181A20),
-                      hoverColor: const Color(0xff2A2D37),
-                      onTap: () => _launchUrl(
-                        context,
-                        "https://github.com/Abderrahmane-Berramdan",
-                      ),
-                    ),
-                  ),
-                  ScrollReveal(
-                    duration: const Duration(milliseconds: 600),
-                    delay: const Duration(milliseconds: 500),
-                    animationBuilder: (child) => BounceInUp(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 500),
-                      child: child,
-                    ),
-                    child: SocialButton(
-                      customIcon: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 4,
-                          vertical: 1,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(3),
-                        ),
-                        child: const Text(
-                          "in",
-                          style: TextStyle(
-                            color: Color(0xff0A66C2),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                            height: 1.1,
-                          ),
-                        ),
-                      ),
-                      label: "LinkedIn",
-                      backgroundColor: const Color(0xff0A66C2),
-                      hoverColor: const Color(0xff1B7BDD),
-                      onTap: () => _launchUrl(
-                        context,
-                        "https://www.linkedin.com/in/abderrahmane-berramdan-6bb225301/",
-                      ),
-                    ),
-                  ),
-                  ScrollReveal(
-                    duration: const Duration(milliseconds: 600),
-                    delay: const Duration(milliseconds: 600),
-                    animationBuilder: (child) => BounceInUp(
-                      duration: const Duration(milliseconds: 600),
-                      delay: const Duration(milliseconds: 600),
-                      child: child,
-                    ),
-                    child: SocialButton(
-                      customIcon: const SizedBox(
-                        width: 22,
-                        height: 22,
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Icon(
-                              Icons.chat_bubble_rounded,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            Positioned(
-                              top: 3.5,
-                              left: 4.5,
-                              child: Icon(
-                                Icons.phone,
-                                color: Color(0xff25D366),
-                                size: 11,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      label: "WhatsApp",
-                      backgroundColor: const Color(0xff25D366),
-                      hoverColor: const Color(0xff20BA5A),
-                      onTap: () =>
-                          _launchUrl(context, "https://wa.me/213696750847"),
-                    ),
-                  ),
-                ],
-              ),
+              // // Connect divider
+              // Row(
+              //   children: [
+              //     Expanded(
+              //       child: Divider(
+              //         color: Colors.grey.shade800,
+              //         thickness: 1,
+              //         endIndent: 20,
+              //       ),
+              //     ),
+              //     const Text(
+              //       "Connect with me",
+              //       style: TextStyle(
+              //         color: Colors.white70,
+              //         fontSize: 16,
+              //         fontWeight: FontWeight.w600,
+              //         letterSpacing: 1.2,
+              //       ),
+              //     ),
+              //     Expanded(
+              //       child: Divider(
+              //         color: Colors.grey.shade800,
+              //         thickness: 1,
+              //         indent: 20,
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // const SizedBox(height: 24),
+              // Wrap(
+              //   alignment: WrapAlignment.center,
+              //   spacing: 20,
+              //   runSpacing: 14,
+              //   children: [
+              //     ScrollReveal(
+              //       duration: const Duration(milliseconds: 600),
+              //       delay: const Duration(milliseconds: 400),
+              //       animationBuilder: (child) => BounceInUp(
+              //         duration: const Duration(milliseconds: 600),
+              //         delay: const Duration(milliseconds: 400),
+              //         child: child,
+              //       ),
+              //       child: SocialButton(
+              //         customIcon: Image.asset(
+              //           "assets/github-sign.png",
+              //           height: 20,
+              //           color: Colors.white,
+              //         ),
+              //         label: "GitHub",
+              //         backgroundColor: const Color(0xff181A20),
+              //         hoverColor: const Color(0xff2A2D37),
+              //         onTap: () => _launchUrl(
+              //           context,
+              //           "https://github.com/Abderrahmane-Berramdan",
+              //         ),
+              //       ),
+              //     ),
+              //     ScrollReveal(
+              //       duration: const Duration(milliseconds: 600),
+              //       delay: const Duration(milliseconds: 500),
+              //       animationBuilder: (child) => BounceInUp(
+              //         duration: const Duration(milliseconds: 600),
+              //         delay: const Duration(milliseconds: 500),
+              //         child: child,
+              //       ),
+              //       child: SocialButton(
+              //         customIcon: Container(
+              //           padding: const EdgeInsets.symmetric(
+              //             horizontal: 4,
+              //             vertical: 1,
+              //           ),
+              //           decoration: BoxDecoration(
+              //             color: Colors.white,
+              //             borderRadius: BorderRadius.circular(3),
+              //           ),
+              //           child: const Text(
+              //             "in",
+              //             style: TextStyle(
+              //               color: Color(0xff0A66C2),
+              //               fontWeight: FontWeight.bold,
+              //               fontSize: 12,
+              //               height: 1.1,
+              //             ),
+              //           ),
+              //         ),
+              //         label: "LinkedIn",
+              //         backgroundColor: const Color(0xff0A66C2),
+              //         hoverColor: const Color(0xff1B7BDD),
+              //         onTap: () => _launchUrl(
+              //           context,
+              //           "https://www.linkedin.com/in/abderrahmane-berramdan-6bb225301/",
+              //         ),
+              //       ),
+              //     ),
+              //     ScrollReveal(
+              //       duration: const Duration(milliseconds: 600),
+              //       delay: const Duration(milliseconds: 600),
+              //       animationBuilder: (child) => BounceInUp(
+              //         duration: const Duration(milliseconds: 600),
+              //         delay: const Duration(milliseconds: 600),
+              //         child: child,
+              //       ),
+              //       child: SocialButton(
+              //         customIcon: const SizedBox(
+              //           width: 22,
+              //           height: 22,
+              //           child: Stack(
+              //             alignment: Alignment.center,
+              //             children: [
+              //               Icon(
+              //                 Icons.chat_bubble_rounded,
+              //                 color: Colors.white,
+              //                 size: 20,
+              //               ),
+              //               Positioned(
+              //                 top: 3.5,
+              //                 left: 4.5,
+              //                 child: Icon(
+              //                   Icons.phone,
+              //                   color: Color(0xff25D366),
+              //                   size: 11,
+              //                 ),
+              //               ),
+              //             ],
+              //           ),
+              //         ),
+              //         label: "WhatsApp",
+              //         backgroundColor: const Color(0xff25D366),
+              //         hoverColor: const Color(0xff20BA5A),
+              //         onTap: () =>
+              //             _launchUrl(context, "https://wa.me/213696750847"),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),

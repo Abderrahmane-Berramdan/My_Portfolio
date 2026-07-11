@@ -10,6 +10,8 @@ import 'package:my_portfolio/widgets/hover_icon.dart';
 import 'package:my_portfolio/widgets/experience_section.dart';
 import 'package:my_portfolio/widgets/education_section.dart';
 import 'package:my_portfolio/widgets/contact_section.dart';
+import 'package:my_portfolio/widgets/available_for_work_badge.dart';
+import 'package:my_portfolio/widgets/portfolio_footer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -306,28 +308,54 @@ class _HomePageState extends State<HomePage> {
                       ZoomIn(
                         duration: const Duration(milliseconds: 1000),
                         child: Container(
-                          height: isMobile
-                              ? 220
-                              : (isAboutCentered ? 280 : 350),
-                          width: isMobile ? 220 : (isAboutCentered ? 280 : 350),
                           margin: EdgeInsets.only(
                             left: isAboutCentered ? 0 : 17,
                             bottom: isAboutCentered ? 24 : 0,
                             right: isAboutCentered ? 0 : 70,
                           ),
-                          decoration: BoxDecoration(
-                            color: const Color(0xff424657),
-                            borderRadius: BorderRadius.circular(200),
-                            boxShadow: const [
-                              BoxShadow(
-                                blurRadius: 30,
-                                color: Colors.grey,
-                                spreadRadius: 5,
-                              ),
-                            ],
-                          ),
-                          child: const CircleAvatar(
-                            backgroundImage: AssetImage("assets/my_photo.jpg"),
+                          child: SizedBox(
+                            height: isMobile
+                                ? 220
+                                : (isAboutCentered ? 280 : 350),
+                            width: isMobile
+                                ? 220
+                                : (isAboutCentered ? 280 : 350),
+                            child: Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Container(
+                                  height: isMobile
+                                      ? 220
+                                      : (isAboutCentered ? 280 : 350),
+                                  width: isMobile
+                                      ? 220
+                                      : (isAboutCentered ? 280 : 350),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff424657),
+                                    borderRadius: BorderRadius.circular(200),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        blurRadius: 30,
+                                        color: Colors.grey,
+                                        spreadRadius: 5,
+                                      ),
+                                    ],
+                                  ),
+                                  child: const CircleAvatar(
+                                    backgroundImage: AssetImage(
+                                      "assets/my_photo.jpg",
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: isMobile ? 0 : -10,
+                                  left: isMobile ? 50 : 100,
+                                  child: AvailableForWorkBadge(
+                                    compact: isMobile,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -741,7 +769,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const ContactSection(),
-                  const SizedBox(height: 50),
+                  const PortfolioFooter(),
                 ],
               ),
             ),
