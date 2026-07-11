@@ -33,7 +33,7 @@ class SkillsPage extends StatelessWidget {
       name: 'Python',
       tag: 'Language',
       desc: 'General-purpose programming language',
-      percent: 65,
+      percent: 50,
       color: const Color(0xFFF6C143),
       image: "assets/skills_icons/python.png",
     ),
