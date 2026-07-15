@@ -47,7 +47,7 @@ class _ProjectCardState extends State<ProjectCard> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               AspectRatio(
-                aspectRatio: 12 / 7,
+                aspectRatio: 12 / 10,
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
@@ -83,144 +83,147 @@ class _ProjectCardState extends State<ProjectCard> {
               ),
 
               // Content
-              Padding(
-                padding: const EdgeInsets.all(14.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 10,
-                  children: [
-                    Text(
-                      p.title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 10,
+                    children: [
+                      Text(
+                        p.title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 6,
-                      children: p.tech
-                          .map(
-                            (t) => Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.blue.withValues(alpha: 0.15),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                t,
-                                style: TextStyle(
-                                  color: Colors.blue.withValues(alpha: 0.95),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 6,
+                        children: p.tech
+                            .map(
+                              (t) => Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 6,
                                 ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                    Text(
-                      p.description,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(height: 10),
-                    // Buttons
-                    Row(
-                      spacing: 20,
-                      children: [
-                        Expanded(
-                          child: ElevatedButton(
-                            onHover: (value) {
-                              setState(() {
-                                isHovering1 = value;
-                              });
-                            },
-                            onPressed: () => _openUrl(p.githubUrl),
-                            style: ButtonStyle(
-                              padding: const WidgetStatePropertyAll(
-                                EdgeInsets.all(15),
-                              ),
-                              backgroundColor: WidgetStatePropertyAll(
-                                isHovering1
-                                    ? Colors.blue.withValues(alpha: 0.7)
-                                    : Colors.blue.withValues(alpha: 0.8),
-                              ),
-                              shape: WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                decoration: BoxDecoration(
+                                  color: Colors.blue.withValues(alpha: 0.15),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              spacing: 15,
-                              children: [
-                                SizedBox(
-                                  height: 25,
-                                  width: 25,
-                                  child: Image.asset("assets/pngegg.png"),
-                                ),
-                                const Text(
-                                  "View Code",
+                                child: Text(
+                                  t,
                                   style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 1,
+                                    color: Colors.blue.withValues(alpha: 0.95),
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: ElevatedButton(
-                            onHover: (value) {
-                              setState(() {
-                                isHovering1 = value;
-                              });
-                            },
-                            onPressed: () => _openUrl(p.githubUrl),
-                            style: ButtonStyle(
-                              padding: const WidgetStatePropertyAll(
-                                EdgeInsets.all(15),
                               ),
-                              shape: WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                            )
+                            .toList(),
+                      ),
+                      Text(
+                        p.description,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      // const SizedBox(height: 10),
+                      const Spacer(),
+                      // Buttons
+                      Row(
+                        spacing: 20,
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onHover: (value) {
+                                setState(() {
+                                  isHovering1 = value;
+                                });
+                              },
+                              onPressed: () => _openUrl(p.githubUrl),
+                              style: ButtonStyle(
+                                padding: const WidgetStatePropertyAll(
+                                  EdgeInsets.all(15),
                                 ),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              spacing: 15,
-                              children: [
-                                Icon(
-                                  Icons.open_in_new,
-                                  size: 25,
-                                  color: Colors.blue.withValues(alpha: 0.8),
+                                backgroundColor: WidgetStatePropertyAll(
+                                  isHovering1
+                                      ? Colors.blue.withValues(alpha: 0.7)
+                                      : Colors.blue.withValues(alpha: 0.8),
                                 ),
-                                const Text(
-                                  'Live Demo',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                                shape: WidgetStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                              ],
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                spacing: 10,
+                                children: [
+                                  SizedBox(
+                                    height: 25,
+                                    width: 25,
+                                    child: Image.asset("assets/pngegg.png"),
+                                  ),
+                                  const Text(
+                                    "View Code",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      // letterSpacing: 1,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          Expanded(
+                            child: ElevatedButton(
+                              onHover: (value) {
+                                setState(() {
+                                  isHovering1 = value;
+                                });
+                              },
+                              onPressed: () => _openUrl(p.githubUrl),
+                              style: ButtonStyle(
+                                padding: const WidgetStatePropertyAll(
+                                  EdgeInsets.all(15),
+                                ),
+                                shape: WidgetStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                spacing: 10,
+                                children: [
+                                  Icon(
+                                    Icons.open_in_new,
+                                    size: 25,
+                                    color: Colors.blue.withValues(alpha: 0.8),
+                                  ),
+                                  const Text(
+                                    'Live Demo',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

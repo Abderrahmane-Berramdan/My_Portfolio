@@ -18,21 +18,39 @@ class Project {
 
 final List<Project> sampleProjects = [
   Project(
-    title: 'Internship Manager',
+    title: 'Stagini',
     description:
-        'Mobile platform to find and manage internships with student profiles and company dashboards.',
-    tech: ['Flutter', 'FastAPI', 'SQLite'],
-    imageUrl: 'placeholder',
+        'An internship management platform built to help students explore opportunities, track applications, and interact with company offers in a modern Flutter interface.',
+    tech: [
+      'Flutter',
+      'FastAPI',
+      'REST API',
+      'SharedPreferences',
+      'Provider',
+      'MVVM',
+      'flutter_secure_storage',
+      'Deep Links',
+      'flutter_map',
+      'QR Code Scanning',
+    ],
+    imageUrl: 'assets/projects/stagini.png',
     githubUrl: 'https://github.com/yourname/internship-manager',
     liveDemoUrl: 'https://your-demo-link.example.com',
   ),
   Project(
-    title: 'Notes App',
+    title: 'Portfolio Website',
     description:
-        'A lightweight notes app with categories, search and local persistence.',
-    tech: ['Flutter', 'Provider', 'Hive'],
-    imageUrl: 'placeholder',
-    githubUrl: 'https://github.com/yourname/notes-app',
+        'A responsive personal portfolio website built to showcase my projects, skills, experience, and contact information with a clean modern UI.',
+    tech: [
+      'Flutter',
+      'Dart',
+      'animate_do',
+      'visibility_detector',
+      'lottie',
+      'url_launcher',
+    ],
+    imageUrl: 'assets/projects/my_portfolio.png',
+    githubUrl: 'https://github.com/yourname/portfolio',
     liveDemoUrl: 'https://your-demo-link.example.com',
   ),
   Project(
