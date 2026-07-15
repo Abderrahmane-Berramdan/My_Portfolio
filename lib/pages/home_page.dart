@@ -349,7 +349,11 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Positioned(
                                   bottom: isMobile ? 0 : -10,
-                                  left: isMobile ? 50 : 100,
+                                  left: isMobile
+                                      ? 50
+                                      : isAboutCentered
+                                      ? 60
+                                      : 95,
                                   child: AvailableForWorkBadge(
                                     compact: isMobile,
                                   ),
