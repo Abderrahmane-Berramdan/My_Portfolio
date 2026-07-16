@@ -518,7 +518,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   decoration: BoxDecoration(
                                     color: const Color(0xff333646),
-                                    borderRadius: BorderRadius.circular(30),
+                                    borderRadius: BorderRadius.circular(15),
                                     boxShadow: [
                                       BoxShadow(
                                         blurRadius: _isHovering ? 20 : 10,
@@ -527,13 +527,19 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ],
                                   ),
-                                  child: const Text(
-                                    "Show my CV",
-                                    style: TextStyle(
-                                      letterSpacing: 2,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  child: const Row(
+                                    spacing: 8,
+                                    children: [
+                                      Icon(Icons.file_open_outlined,color: Colors.white,size: 20,),
+                                       Text(
+                                        "Show my CV",
+                                        style: TextStyle(
+                                          // letterSpacing: 2,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
