@@ -68,6 +68,7 @@ flutter:
     - assets/skills_icons/
     - assets/projects/stagini.png
     - assets/projects/my_portfolio.png
+    - assets/projects/netflix.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
