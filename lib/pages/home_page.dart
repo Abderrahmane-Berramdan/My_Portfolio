@@ -527,19 +527,22 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ],
                                   ),
-                                  child: const Row(
-                                    spacing: 8,
-                                    children: [
-                                      Icon(Icons.file_open_outlined,color: Colors.white,size: 20,),
-                                       Text(
-                                        "Show my CV",
-                                        style: TextStyle(
-                                          // letterSpacing: 2,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600,
+                                  child: const SizedBox(
+                                    width: 130,
+                                    child:  Row(
+                                      spacing: 8,
+                                      children: [
+                                        Icon(Icons.file_open_outlined,color: Colors.white,size: 20,),
+                                         Text(
+                                          "Show my CV",
+                                          style: TextStyle(
+                                            // letterSpacing: 2,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

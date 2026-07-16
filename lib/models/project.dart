@@ -50,7 +50,7 @@ final List<Project> sampleProjects = [
     ],
     imageUrl: 'assets/projects/netflix.png',
     githubUrl: 'https://github.com/Abderrahmane-Berramdan/netflix_clone',
-    liveDemoUrl: 'https://your-demo-link.example.com',
+    liveDemoUrl: 'https://youtube.com/shorts/XgMcv0nVNnY',
   ),
   Project(
     title: 'Portfolio Website',

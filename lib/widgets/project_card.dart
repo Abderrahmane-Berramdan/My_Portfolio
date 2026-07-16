@@ -188,7 +188,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                   isHovering1 = value;
                                 });
                               },
-                              onPressed: () => _openUrl(p.githubUrl),
+                              onPressed: () => _openUrl(p.liveDemoUrl),
                               style: ButtonStyle(
                                 padding: const WidgetStatePropertyAll(
                                   EdgeInsets.all(15),
