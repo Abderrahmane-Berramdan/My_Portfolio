@@ -38,6 +38,21 @@ final List<Project> sampleProjects = [
     liveDemoUrl: 'https://your-demo-link.example.com',
   ),
   Project(
+    title: 'Netflix clone',
+    description:
+        'Netflix Clone - A Flutter app powered by TMDB API, featuring a Netflix-style UI with animated splash screen, movie & TV listings (Popular, Trending, Top Rated).',
+    tech: [
+      'Flutter',
+      'REST API',
+      'Provider',
+      'cached_network_image',
+      'TMDB API',
+    ],
+    imageUrl: 'assets/projects/netflix.png',
+    githubUrl: 'https://github.com/Abderrahmane-Berramdan/netflix_clone',
+    liveDemoUrl: 'https://your-demo-link.example.com',
+  ),
+  Project(
     title: 'Portfolio Website',
     description:
         'A responsive personal portfolio website built to showcase my projects, skills, experience, and contact information with a clean modern UI.',
@@ -50,16 +65,7 @@ final List<Project> sampleProjects = [
       'url_launcher',
     ],
     imageUrl: 'assets/projects/my_portfolio.png',
-    githubUrl: 'https://github.com/yourname/portfolio',
-    liveDemoUrl: 'https://your-demo-link.example.com',
-  ),
-  Project(
-    title: 'Event Booking',
-    description:
-        'App for browsing and booking local events with integrated payments.',
-    tech: ['Flutter', 'Stripe', 'Node.js'],
-    imageUrl: 'placeholder',
-    githubUrl: 'https://github.com/yourname/event-booking',
+    githubUrl: 'https://github.com/Abderrahmane-Berramdan/My_Portfolio',
     liveDemoUrl: 'https://your-demo-link.example.com',
   ),
 ];
