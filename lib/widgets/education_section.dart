@@ -34,7 +34,7 @@ class EducationSection extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: double.infinity,
-        height: 420,
+        height: 460,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: ListView.builder(
@@ -50,7 +50,7 @@ class EducationSection extends StatelessWidget {
                   child: child,
                 ),
                 child: SizedBox(
-                  width: 390,
+                  width: 380,
                   child: EducationCard(item: items[index]),
                 ),
               );
@@ -87,7 +87,7 @@ class _EducationCardState extends State<EducationCard> {
         curve: Curves.easeOut,
         child: Container(
           padding: const EdgeInsets.all(28),
-          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           decoration: BoxDecoration(
             color: const Color(0xff333646).withValues(alpha: 0.5),
             borderRadius: BorderRadius.circular(16),
