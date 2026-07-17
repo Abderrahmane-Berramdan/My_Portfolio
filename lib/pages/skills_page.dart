@@ -84,7 +84,7 @@ class SkillsPage extends StatelessWidget {
                     itemCount: list.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: cols,
-                      mainAxisExtent: 200,
+                      mainAxisExtent: 230,
                       crossAxisSpacing: isMobile ? 16 : 30,
                       mainAxisSpacing: isMobile ? 16 : 30,
                     ),

@@ -26,7 +26,7 @@ class SkillCard extends StatelessWidget {
         ],
       ),
       child: Column(
-        spacing: 8,
+        // spacing: 8,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -114,16 +114,18 @@ class SkillCard extends StatelessWidget {
               ),
             ],
           ),
-
+          const SizedBox(height: 20),
           Text(
             skill.desc,
             style: TextStyle(fontSize: 14, color: Colors.grey.shade400),
           ),
           const Spacer(),
+          // const SizedBox(height: 10),
           Text(
             'Proficiency Level',
             style: TextStyle(fontSize: 12, color: Colors.grey.shade400),
           ),
+          const SizedBox(height: 10),
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Container(

@@ -4,7 +4,7 @@ class Skill {
   final String name;
   final String desc;
   final String tag;
-  final double percent;
+  final int percent;
   final Color color;
   final String image;
 
