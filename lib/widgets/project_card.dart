@@ -146,7 +146,10 @@ class _ProjectCardState extends State<ProjectCard> {
                               onPressed: () => _openUrl(p.githubUrl),
                               style: ButtonStyle(
                                 padding: const WidgetStatePropertyAll(
-                                  EdgeInsets.all(15),
+                                  EdgeInsets.symmetric(
+                                    vertical: 15,
+                                    horizontal: 9,
+                                  ),
                                 ),
                                 backgroundColor: WidgetStatePropertyAll(
                                   isHovering1
@@ -161,7 +164,7 @@ class _ProjectCardState extends State<ProjectCard> {
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                spacing: 10,
+                                spacing: 5,
                                 children: [
                                   SizedBox(
                                     height: 25,
@@ -191,7 +194,10 @@ class _ProjectCardState extends State<ProjectCard> {
                               onPressed: () => _openUrl(p.liveDemoUrl),
                               style: ButtonStyle(
                                 padding: const WidgetStatePropertyAll(
-                                  EdgeInsets.all(15),
+                                  EdgeInsets.symmetric(
+                                    vertical: 15,
+                                    horizontal: 9,
+                                  ),
                                 ),
                                 shape: WidgetStatePropertyAll(
                                   RoundedRectangleBorder(
@@ -201,7 +207,7 @@ class _ProjectCardState extends State<ProjectCard> {
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                spacing: 10,
+                                spacing: 5,
                                 children: [
                                   Icon(
                                     Icons.open_in_new,

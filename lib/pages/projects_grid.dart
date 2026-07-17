@@ -20,7 +20,7 @@ class ProjectsGrid extends StatelessWidget {
     if (width >= 900) return 0.66;
     if (width >= 700) return 0.58;
     if (width >= 500) return 0.73;
-    return 0.47;
+    return 0.49;
   }
 
   @override
