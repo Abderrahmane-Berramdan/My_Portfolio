@@ -49,16 +49,16 @@ class ContactSection extends StatelessWidget {
                 builder: (context, constraints) {
                   final double width = constraints.maxWidth;
                   int crossAxisCount = 3;
-                  double childAspectRatio =1.2;
+                  double childAspectRatio = 1.2;
 
                   if (width < 600) {
                     crossAxisCount = 1;
-                    childAspectRatio = 1.4;
+                    childAspectRatio = 1.3;
                   } else if (width < 900) {
                     crossAxisCount = 2;
                     childAspectRatio = 1.15;
                   }
-
+                  print("${width}abdou");
                   return GridView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
