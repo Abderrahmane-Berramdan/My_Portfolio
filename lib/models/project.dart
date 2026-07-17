@@ -34,8 +34,8 @@ final List<Project> sampleProjects = [
       'QR Code Scanning',
     ],
     imageUrl: 'assets/projects/stagini.png',
-    githubUrl: 'https://github.com/yourname/internship-manager',
-    liveDemoUrl: 'https://your-demo-link.example.com',
+    githubUrl: 'empty',
+    liveDemoUrl: 'empty',
   ),
   Project(
     title: 'Netflix clone',
@@ -66,6 +66,6 @@ final List<Project> sampleProjects = [
     ],
     imageUrl: 'assets/projects/my_portfolio.png',
     githubUrl: 'https://github.com/Abderrahmane-Berramdan/My_Portfolio',
-    liveDemoUrl: 'https://your-demo-link.example.com',
+    liveDemoUrl: 'empty',
   ),
 ];
