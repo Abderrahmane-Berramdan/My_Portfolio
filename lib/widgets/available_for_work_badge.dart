@@ -7,7 +7,6 @@ class AvailableForWorkBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double fontSize = compact ? 12 : 16;
-    final double dotSize = compact ? 6 : 7;
     final EdgeInsets padding = compact
         ? const EdgeInsets.symmetric(horizontal: 8, vertical: 4)
         : const EdgeInsets.symmetric(horizontal: 10, vertical: 5);
