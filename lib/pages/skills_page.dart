@@ -25,7 +25,7 @@ class SkillsPage extends StatelessWidget {
       name: 'Firebase',
       tag: 'Backend',
       desc: 'Backend as a Service platform',
-      percent: 65,
+      percent: 75,
       color: const Color(0xFFF6C143),
       image: "assets/skills_icons/firebase1.png",
     ),
