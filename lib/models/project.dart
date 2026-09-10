@@ -18,6 +18,27 @@ class Project {
 
 final List<Project> sampleProjects = [
   Project(
+    title: 'Books Online — Freelance Project',
+    description:
+        'A responsive Arabic mathematics e-library developed for a real client, featuring public book browsing and a protected admin panel for managing subjects, books, and digital files.',
+    tech: [
+      'Flutter',
+      'Dart',
+      'Firebase Authentication',
+      'Firebase Firestore',
+      'Firebase Custom Claims',
+      'Supabase Storage',
+      'Google Drive API',
+      'Provider',
+      'MVVM',
+      'Responsive Design',
+      'Netlify',
+    ],
+    imageUrl: 'assets/projects/books_online3.png',
+    githubUrl: 'empty',
+    liveDemoUrl: 'https://books-online-library.netlify.app',
+  ),
+  Project(
     title: 'Stagini',
     description:
         'An internship management platform built to help students explore opportunities, track applications, and interact with company offers in a modern Flutter interface.',
