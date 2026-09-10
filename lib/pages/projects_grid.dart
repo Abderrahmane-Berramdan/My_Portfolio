@@ -16,11 +16,11 @@ class ProjectsGrid extends StatelessWidget {
 
   double _calculateChildAspect(double width) {
     // Adjust card height vs width so the UI looks balanced
-    if (width >= 1200) return 0.6;
+    if (width >= 1200) return 0.58;
     if (width >= 900) return 0.66;
-    if (width >= 700) return 0.58;
-    if (width >= 500) return 0.73;
-    return 0.49;
+    if (width >= 700) return 0.52;
+    if (width >= 500) return 0.69;
+    return 0.5;
   }
 
   @override
