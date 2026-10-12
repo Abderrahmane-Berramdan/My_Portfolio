@@ -156,7 +156,7 @@ class PortfolioFooter extends StatelessWidget {
                       backgroundColor: const Color(0xff25D366),
                       hoverColor: const Color(0xff20BA5A),
                       onTap: () =>
-                          _launchUrl(context, "https://wa.me/213696750847"),
+                          _launchUrl(context, "https://wa.me/213778560210"),
                     ),
                   ),
                 ],
