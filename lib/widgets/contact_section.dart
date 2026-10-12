@@ -93,8 +93,8 @@ class ContactSection extends StatelessWidget {
                         child: ContactInfoCard(
                           icon: Icons.phone_rounded,
                           title: "Phone",
-                          value: "+213 696750847",
-                          onTap: () => _launchUrl(context, "tel:+213696750847"),
+                          value: "+213 778560210",
+                          onTap: () => _launchUrl(context, "tel:+213778560210"),
                         ),
                       ),
                       ScrollReveal(
